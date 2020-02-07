@@ -5,7 +5,7 @@ inputs:
   content:
     description: >-
       A string to append to the release description.  The release description
-     is in markdown.  A newline will be added automatically.
+      is in markdown.  A newline will be added automatically.
     required: true
   token:
     description: >-
