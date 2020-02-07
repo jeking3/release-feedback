@@ -7,10 +7,14 @@ inputs:
       A string to append to the release description.  The release description
       is in markdown.  A newline will be added automatically.
     required: true
+  release:
+    description: >-
+      The release id.  Use ${{ github.event.release.id }}.
+    required: true
   token:
     description: >-
-      A token for authenticating to GitHub.  If not provided, GITHUB_TOKEN is
-      used.
+      A token for authenticating to GitHub.  Uses ${{ secrets.GITHUB_TOKEN }}
+      if not declared.
     required: false
 runs:
   using: 'node12'
