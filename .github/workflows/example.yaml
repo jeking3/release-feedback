@@ -1,8 +1,8 @@
-name: Example
+name: example
 on:
   release:
     types:
-      - prerelease
+      - published
 
 jobs:
   example:
