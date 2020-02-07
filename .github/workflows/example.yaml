@@ -1,0 +1,21 @@
+name: Example
+on:
+  release:
+    types:
+      - prerelease
+
+jobs:
+  example:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Append Multiple Lines
+        uses: ./
+        with:
+          content:
+            - "### Build Status"
+            - "- Beginning Build"
+      - name: Append One Line
+        uses: ./
+        with:
+          content: "- Build Complete!"

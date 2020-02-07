@@ -1,4 +1,15 @@
-const wait = require('./wait');
+'use strict'
+
+const process = require('process');
+const index = require('./index');
+
+test('normal', async() => {
+    process.env['GITHUB_TOKEN'] = "ght";
+    process.env['INPUT_CONTENT'] = "to_add";
+    await index.run();
+})
+
+/*const wait = require('./wait');
 const process = require('process');
 const cp = require('child_process');
 const path = require('path');
@@ -20,4 +31,4 @@ test('test runs', () => {
     process.env['INPUT_MILLISECONDS'] = 500;
     const ip = path.join(__dirname, 'index.js');
     console.log(cp.execSync(`node ${ip}`).toString());
-})
+})*/

@@ -1,13 +1,12 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: release-feedback
+description: Add content to your GitHub release description from your release workflow.
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
+  content:
+    description: A string or list of strings to append to the release description.
     required: true
-    default: '1000'
-outputs:
-  time: # output will be available to future steps 
-    description: 'The message to output'
+  token:
+    description: A token for authenticating to GitHub.  If not provided, GITHUB_TOKEN is used.
+    required: false
 runs:
   using: 'node12'
   main: 'dist/index.js'

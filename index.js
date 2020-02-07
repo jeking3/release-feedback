@@ -1,22 +1,28 @@
+'use strict'
+
 const core = require('@actions/core');
-const wait = require('./wait');
+const github = require('@actions/github');
 
+module.exports.run = async function run() {
+  try {
+    const context = github.context;
+    core.debug("context: ${context}");
 
-// most @actions toolkit packages have async methods
-async function run() {
-  try { 
-    const ms = core.getInput('milliseconds');
-    console.log(`Waiting ${ms} milliseconds ...`)
+    const octokit = new github.GitHub(process.env.INPUT_TOKEN || process.env.GITHUB_TOKEN);
+    const release = octokit.releases.get({
+      owner: context.owner,
+      repo: context.repo,
+      release_id: context.release_id
+    });
+    core.debug(`release: ${release}`);
 
-    core.debug((new Date()).toTimeString())
-    wait(parseInt(ms));
-    core.debug((new Date()).toTimeString())
+    const new_content = process.env.INPUT_CONTENT;
+    core.debug(`content: ${new_content}`);
 
-    core.setOutput('time', new Date().toTimeString());
-  } 
-  catch (error) {
-    core.setFailed(error.message);
+    core.debug("done for now")
+  } catch (error) {
+    core.setFailed(error.message)
   }
 }
 
-run()
+this.run()
