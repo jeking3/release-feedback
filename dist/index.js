@@ -493,14 +493,14 @@ module.exports.run = async function run() {
 
     const octokit = new github.GitHub(core.getInput('token') || process.env.GITHUB_TOKEN);
     
-    const release = octokit.repos.getRelease({
+    const release = await octokit.repos.getRelease({
       owner: owner,
       repo: repo,
       release_id: core.getInput('release')
     });
 
     const new_content = core.getInput('content');
-    const new_body = `${release.body}\r\n${new_content}`
+    const new_body = `${release.data.body}\r\n${new_content}`
 
     octokit.repos.updateRelease({
       owner: owner,
