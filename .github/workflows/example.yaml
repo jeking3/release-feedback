@@ -7,11 +7,17 @@ on:
     types:
       - published
 
+env:
+  SOME_DOCKER_IMAGE: docker/foobar:v.awesome
+
 jobs:
   example:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Promote env to output
+        id: promote
+        run: echo "::set-output name=image::${SOME_DOCKER_IMAGE}"
       - uses: ./
         with:
           content: "### Build Status"
@@ -24,6 +30,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
       - uses: ./
         with:
-          content: "- Build Complete!"
+          content: "- Build Complete!  Fictitiously pushed to ${{ steps.id.image }}"
           release: ${{ github.event.release.id }}
           token: ${{ secrets.GITHUB_TOKEN }}

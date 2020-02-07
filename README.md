@@ -13,6 +13,10 @@ the release workflow.
 
 ## Example
 
+This example also shows you how to promote workflow environment variable into
+step output that can be used inside `with` statements on actions.  One cannot
+put environment variables into `with` statements directly.
+
 ```yaml
 name: example
 on:
@@ -20,11 +24,17 @@ on:
     types:
       - published
 
+env:
+  SOME_DOCKER_IMAGE: docker/foobar:v.awesome
+
 jobs:
   example:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Promote env to output
+        id: promote
+        run: echo "::set-output name=image::${SOME_DOCKER_IMAGE}"
       - uses: jeking3/release-feedback@v1
         with:
           content: "### Build Status"
@@ -37,7 +47,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
       - uses: jeking3/release-feedback@v1
         with:
-          content: "- Build Complete!"
+          content: "- Build Complete!  Fictitiously pushed to ${{ steps.id.image }}"
           release: ${{ github.event.release.id }}
           token: ${{ secrets.GITHUB_TOKEN }}
 ```
