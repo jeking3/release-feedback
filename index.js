@@ -9,7 +9,7 @@ module.exports.run = async function run() {
     core.debug("context: ${context}");
 
     const octokit = new github.GitHub(process.env.INPUT_TOKEN || process.env.GITHUB_TOKEN);
-    const release = octokit.releases.get({
+    const release = octokit.repos.getRelease({
       owner: context.owner,
       repo: context.repo,
       release_id: context.release_id
@@ -19,7 +19,13 @@ module.exports.run = async function run() {
     const new_content = process.env.INPUT_CONTENT;
     core.debug(`content: ${new_content}`);
 
-    core.debug("done for now")
+    const new_body = `${release.body}\r\n${new_content}`
+    octokit.repos.updateRelease({
+      owner: context.owner,
+      repo: context.repo,
+      release_id: context.release_id,
+      body: new_body
+    })
   } catch (error) {
     core.setFailed(error.message)
   }

@@ -1,3 +1,6 @@
+# note use "jeking3/release-feedback@v1" instead of "./" for production
+# this example also helps me test changes
+---
 name: example
 on:
   release:
@@ -9,13 +12,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Append Multiple Lines
-        uses: ./
+      - uses: ./
         with:
-          content:
-            - "### Build Status"
-            - "- Beginning Build"
-      - name: Append One Line
-        uses: ./
+          content: "### Build Status"
+      - uses: ./
+        with:
+          content: "- Beginning Build"
+      - uses: ./
         with:
           content: "- Build Complete!"

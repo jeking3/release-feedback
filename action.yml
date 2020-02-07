@@ -1,11 +1,16 @@
 name: release-feedback
-description: Add content to your GitHub release description from your release workflow.
+description: >-
+  Add content to your GitHub release description from your release workflow.
 inputs:
   content:
-    description: A string or list of strings to append to the release description.
+    description: >-
+      A string to append to the release description.  The release description
+     is in markdown.  A newline will be added automatically.
     required: true
   token:
-    description: A token for authenticating to GitHub.  If not provided, GITHUB_TOKEN is used.
+    description: >-
+      A token for authenticating to GitHub.  If not provided, GITHUB_TOKEN is
+      used.
     required: false
 runs:
   using: 'node12'
