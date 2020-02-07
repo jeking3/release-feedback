@@ -47,7 +47,9 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
       - uses: jeking3/release-feedback@v1
         with:
-          content: "- Build Complete!  Fictitiously pushed to ${{ steps.id.image }}"
+          content: >-
+            - Build Complete!  Fictitiously pushed to
+            [${{ steps.promote.outputs.image }}](https://www.github.com/jeking3/release-feedback/packages)
           release: ${{ github.event.release.id }}
           token: ${{ secrets.GITHUB_TOKEN }}
 ```

@@ -8,7 +8,7 @@ on:
       - published
 
 env:
-  SOME_DOCKER_IMAGE: docker/foobar:v.awesome
+  SOME_DOCKER_IMAGE: some/thing:v.awesome
 
 jobs:
   example:
@@ -30,6 +30,8 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
       - uses: ./
         with:
-          content: "- Build Complete!  Fictitiously pushed to ${{ steps.id.image }}"
+          content: >-
+            - Build Complete!  Fictitiously pushed to
+            [${{ steps.promote.outputs.image }}](https://www.github.com/jeking3/release-feedback/packages)
           release: ${{ github.event.release.id }}
           token: ${{ secrets.GITHUB_TOKEN }}
