@@ -9,13 +9,16 @@ inputs:
     required: true
   release:
     description: >-
-      The release id.  Use ${{ github.event.release.id }}.
+      The release id.  Use `github.event.release.id`.
     required: true
   token:
     description: >-
-      A token for authenticating to GitHub.  Uses ${{ secrets.GITHUB_TOKEN }}
+      A token for authenticating to GitHub.  Uses `secrets.GITHUB_TOKEN`
       if not declared.
     required: false
 runs:
   using: 'node12'
   main: 'dist/index.js'
+branding:
+  icon: 'rss'
+  color: 'blue'

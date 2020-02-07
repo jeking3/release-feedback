@@ -481,29 +481,33 @@ module.exports = require("os");
 /***/ 104:
 /***/ (function(module, __unusedexports, __webpack_require__) {
 
-"use strict";
-
-
 const core = __webpack_require__(470);
 const github = __webpack_require__(469);
 
 module.exports.run = async function run() {
   try {
-    const context = github.context;
-    core.debug("context: ${context}");
+    var repository = process.env.GITHUB_REPOSITORY;
+    var parts = repository.split("/");
+    var owner = parts[0];
+    var repo = parts[1];
 
-    const octokit = new github.GitHub(process.env.INPUT_TOKEN || process.env.GITHUB_TOKEN);
-    const release = octokit.releases.get({
-      owner: context.owner,
-      repo: context.repo,
-      release_id: context.release_id
+    const octokit = new github.GitHub(core.getInput('token') || process.env.GITHUB_TOKEN);
+    
+    const release = octokit.repos.getRelease({
+      owner: owner,
+      repo: repo,
+      release_id: core.getInput('release')
     });
-    core.debug(`release: ${release}`);
 
-    const new_content = process.env.INPUT_CONTENT;
-    core.debug(`content: ${new_content}`);
+    const new_content = core.getInput('content');
+    const new_body = `${release.body}\r\n${new_content}`
 
-    core.debug("done for now")
+    octokit.repos.updateRelease({
+      owner: owner,
+      repo: repo,
+      release_id: core.getInput('release'),
+      body: new_body
+    })
   } catch (error) {
     core.setFailed(error.message)
   }
