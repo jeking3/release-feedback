@@ -1,6 +1,6 @@
 {
   "name": "release-feedback",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "GitHub Action to add content to your GitHub release description from your release workflow.",
   "main": "index.js",
   "scripts": {

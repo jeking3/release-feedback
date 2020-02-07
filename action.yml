@@ -5,11 +5,12 @@ inputs:
   content:
     description: >-
       A string to append to the release description.  The release description
-      is in markdown.  A newline will be added automatically.
+      is in markdown.  A newline will be added automatically before this line
+      is added.
     required: true
   release:
     description: >-
-      The release id.  Use `github.event.release.id`.
+      Use `github.event.release.id`.
     required: true
   token:
     description: >-
