@@ -29,14 +29,17 @@ jobs:
         with:
           content: "### Build Status"
           release: ${{ github.event.release.id }}
+          token: ${{ secrets.GITHUB_TOKEN }}
       - uses: jeking3/release-feedback@v1
         with:
           content: "- Beginning Build"
           release: ${{ github.event.release.id }}
+          token: ${{ secrets.GITHUB_TOKEN }}
       - uses: jeking3/release-feedback@v1
         with:
           content: "- Build Complete!"
           release: ${{ github.event.release.id }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 ## License

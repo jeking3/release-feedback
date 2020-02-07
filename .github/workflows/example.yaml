@@ -21,7 +21,9 @@ jobs:
         with:
           content: "- Beginning Build"
           release: ${{ github.event.release.id }}
+          token: ${{ secrets.GITHUB_TOKEN }}
       - uses: ./
         with:
           content: "- Build Complete!"
           release: ${{ github.event.release.id }}
+          token: ${{ secrets.GITHUB_TOKEN }}

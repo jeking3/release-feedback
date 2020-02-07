@@ -14,9 +14,8 @@ inputs:
     required: true
   token:
     description: >-
-      A token for authenticating to GitHub.  Uses `secrets.GITHUB_TOKEN`
-      if not declared.
-    required: false
+      Use `secrets.GITHUB_TOKEN` or any other valid auth token from GitHub.
+    required: true
 runs:
   using: 'node12'
   main: 'dist/index.js'
