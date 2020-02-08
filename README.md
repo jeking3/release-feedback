@@ -29,7 +29,7 @@ The [example](.github/workflows/example.yaml) shows you how to:
 2. Use an environment variable in an action `with` statement through promotion.
 3. Write longer, multi-line descriptions using standard YAML.
 
-We use the example on our own [releases](https://www.github.com/jeking/release-feedback/releases)
+We use the example on our own [releases](https://www.github.com/jeking3/release-feedback/releases)
 so you can see what the results of the example look like.
 
 ## License
