@@ -14,7 +14,7 @@ the release workflow.
 ## TL;DR;
 
 ```yaml
-     - uses: jeking3/release-feedback@v1
+     - uses: jeking3/release-feedback@v2
        with:
          content: "- Beginning Build"
          release: ${{ github.event.release.id }}

@@ -1,7 +1,7 @@
 {
   "name": "release-feedback",
-  "version": "1.0.0",
-  "description": "GitHub Action to add content to your GitHub release description from your release workflow.",
+  "version": "2.0.0",
+  "description": "Add content to your GitHub release description from your release workflow.",
   "main": "index.js",
   "scripts": {
     "lint": "eslint index.js index.test.js",
@@ -29,13 +29,15 @@
   },
   "homepage": "https://github.com/jeking3/release-feedback#readme",
   "dependencies": {
-    "@actions/core": "^1.2.6",
-    "@actions/github": "^2.1.0"
+    "@actions/core": "^1.6.0",
+    "@actions/github": "^5.0.0"
   },
   "devDependencies": {
-    "@zeit/ncc": "^0.21.0",
-    "eslint": "^6.8.0",
-    "eslint-plugin-jest": "^23.7.0",
-    "jest": "^25.1.0"
+    "@vercel/ncc": "^0.31.1",
+    "eslint": "^8.1.0",
+    "eslint-plugin-github": "^4.3.3",
+    "eslint-plugin-jest": "^25.2.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^27.3.1"
   }
 }

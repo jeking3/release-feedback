@@ -13,7 +13,7 @@
     "parserOptions": {
         "ecmaVersion": 2018
     },
-    "plugins": ["jest"],
+    "plugins": ["github", "jest", "prettier"],
     "rules": {
     }
 }

@@ -8,7 +8,7 @@ module.exports.run = async function run() {
     var owner = parts[0];
     var repo = parts[1];
 
-    const octokit = new github.GitHub(core.getInput('token') || process.env.GITHUB_TOKEN);
+    const octokit = github.getOctokit(core.getInput('token') || process.env.GITHUB_TOKEN);
     
     const release = await octokit.repos.getRelease({
       owner: owner,
